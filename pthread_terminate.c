@@ -46,6 +46,7 @@
 #include "pthread.h"
 #include "implement.h"
 
+void (*pthread_terminate_ptr)(void) __attribute__ ((section (".fini_array"))) = &pthread_terminate;
 
 void pthread_terminate(void)
 {

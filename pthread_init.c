@@ -46,6 +46,8 @@
 #include "pthread.h"
 #include "implement.h"
 
+int (*pthread_init_ptr)(void) __attribute__ ((section (".init_array"))) = &pthread_init;
+
 int pthread_init(void)
 {
 
