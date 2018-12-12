@@ -46,9 +46,9 @@
 #include "pthread.h"
 #include "implement.h"
 
-int (*pthread_init_ptr)(void) __attribute__ ((section (".init_array"))) = &pthread_init;
+__attribute__((section(".preinit_array"))) typeof(pthread_init) *__pthread_init = pthread_init;
 
-int pthread_init(void)
+void pthread_init(void)
 {
 
   if (pte_processInitialized)
@@ -60,7 +60,7 @@ int pthread_init(void)
        * since this initialization routine is automatically called only when
        * the dll is loaded.
        */
-      return PTE_TRUE;
+      return;
     }
 
   pte_processInitialized = PTE_TRUE;
@@ -88,6 +88,5 @@ int pthread_init(void)
   pte_osMutexCreate (&pte_spinlock_test_init_lock);
 
 
-  return (pte_processInitialized);
-
+  return;
 }

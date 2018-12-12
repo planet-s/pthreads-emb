@@ -562,7 +562,7 @@ enum
             pte_cleanup_t     _cleanup; \
             \
             pte_push_cleanup( &_cleanup, (pte_cleanup_callback_t) (_rout), (_arg) ); \
- 
+
 #define pthread_cleanup_pop( _execute ) \
             (void) pte_pop_cleanup( _execute ); \
         }
@@ -666,7 +666,7 @@ extern "C" {
      * ===============
      */
 
-    int  pthread_init (void);
+    void  pthread_init (void);
     void  pthread_terminate (void);
 
     /*
