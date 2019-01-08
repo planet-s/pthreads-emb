@@ -46,8 +46,6 @@
 #include "pthread.h"
 #include "implement.h"
 
-__attribute__((section(".preinit_array"))) typeof(pthread_init) *__pthread_init = pthread_init;
-
 void pthread_init(void)
 {
 
