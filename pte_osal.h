@@ -8,7 +8,7 @@ extern "C" {
 #include <sys/types.h>
 
 // XXX
-typedef unsigned long pte_osThreadHandle;
+typedef pid_t pte_osThreadHandle;
 typedef unsigned long pte_osSemaphoreHandle;
 typedef int32_t* pte_osMutexHandle;
 
