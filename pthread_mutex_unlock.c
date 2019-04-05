@@ -60,6 +60,10 @@ pthread_mutex_unlock (pthread_mutex_t * mutex)
   /*
    * Let the system deal with invalid pointers.
    */
+  if (*mutex == NULL)
+    {
+      return EINVAL;
+    }
 
   mx = *mutex;
 
