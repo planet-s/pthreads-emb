@@ -1,17 +1,13 @@
 SRC=$(wildcard *.c)
 OBJ=$(patsubst %.c,%.o,$(SRC))
-LOBJ=$(patsubst %.c,%.lo,$(SRC))
 
 all: libpthread.a
 
 libpthread.a: $(OBJ)
 	$(AR) -rcs $@ $(OBJ)
 
-libpthread.so: $(LOBJ)
-	$(CC) $(CFLAGS) -nostdlib -shared -o $@ $(LOBJ)
+libpthread.so: $(OBJ)
+	$(CC) $(CFLAGS) -nostdlib -shared -o $@ $(OBJ)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I . -c $< -o $@
-
-%.lo: %.c
 	$(CC) $(CFLAGS) -fPIC -I . -c $< -o $@
