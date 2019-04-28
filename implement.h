@@ -251,6 +251,8 @@ struct pthread_cond_t_
 struct pthread_condattr_t_
   {
     int pshared;
+    // TODO: use clock_id
+    clockid_t clock_id;
   };
 
 #define PTE_RWLOCK_MAGIC 0xfacade2
